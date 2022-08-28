@@ -9,44 +9,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author vinyj
  */
 public class No {
     private int valor;
     private List<No> filhos;
     private int nivel;
-    
-    public No(int valor){
+
+    public No(int valor) {
         this.valor = valor;
         this.filhos = new ArrayList<>();
-        this.nivel = nivel;
     }
-    
-    public No adicionarFilhoAoNo(No no){
+
+    public void adicionarFilhoAoNo(No no) {
         no.nivel = nivel + 1;
         filhos.add(no);
-        return no;
     }
-    
+
     public int getValorNo() {
         return valor;
     }
-    
+
     public List<No> getFilhosNo() {
         return filhos;
     }
-    
+
     public int getNivelNo() {
         return nivel;
     }
-    
+
     public int getGrau() {
         return filhos.size();
     }
-    
 
-            
     public No getNo(int noProcurado) {
         if (noProcurado == valor) {
             return this;
@@ -57,6 +52,6 @@ public class No {
                 return no;
             }
         }
-        return null;  
+        return null;
     }
 }

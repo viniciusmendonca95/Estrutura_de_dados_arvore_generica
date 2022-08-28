@@ -6,7 +6,6 @@
 package com.mycompany.arvore_generica;
 
 /**
- *
  * @author vinyj
  */
 public class Main {
@@ -19,47 +18,40 @@ public class Main {
         No no6 = new No(6);
         No no7 = new No(7);
         No no5 = new No(5);
-        
+
         noRaiz.adicionarFilhoAoNo(no4);
         noRaiz.adicionarFilhoAoNo(no2);
         noRaiz.adicionarFilhoAoNo(no9);
         noRaiz.adicionarFilhoAoNo(no1);
-        
+
         no4.adicionarFilhoAoNo(no6);
         no4.adicionarFilhoAoNo(no7);
-        
+
         no9.adicionarFilhoAoNo(no5);
 
         Arvore arvore = new Arvore(noRaiz);
-        
-        System.out.println("Altura do nó:");
-        
-        System.out.println("Altura da árvore:");
-        
-        System.out.println("Profundidade do nó:");
-        
-        System.out.println("Profundidade da árvore:");
-        
-        System.out.println("Grau do nó:");
-        
-        System.out.println("Grau da árvore:");
-        
-        System.out.println("Elementos: ");
+
+        System.out.println("\nAltura do nó:");
+        arvore.getAlturaNo();
+
+        System.out.print("\nAltura da árvore: ");
+        arvore.getAlturaArvore();
+
+        System.out.println("\nGrau do nó:");
+
+        System.out.println("\nGrau da árvore:");
+
+        System.out.println("\nElementos: ");
         arvore.getElementos();
-        
-        System.out.println("Nós folhas:");
+
+        System.out.println("\nNós folhas:");
         arvore.getNoFolha();
-        
-        System.out.println("Nós Internos:");
+
+        System.out.println("\nNós Internos:");
         arvore.getNoInterno();
-        
-        System.out.println("Árvore Genérica:");
+
+        System.out.println("\nÁrvore Genérica:");
         arvore.printArvore(noRaiz);
-        
-
-
-
-    }
-        
     }
 
+}
