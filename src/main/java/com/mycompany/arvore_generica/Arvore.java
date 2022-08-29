@@ -7,32 +7,27 @@ package com.mycompany.arvore_generica;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author vinyj
  */
 public class Arvore {
+    //Atributos da árvore generica
     private No noRaiz;
     private List<No> elementos;
    
-    
+    //Construtor da árvore generica
     public Arvore(No no) {
         this.noRaiz = no;
         this.elementos = new ArrayList<>();
     }
     
-    
+    //Método que retorna o nó raiz da árvore
     public No getNoRaiz(){
         return noRaiz;
     }
-    
-    
-    public No getNo(int valor){
-        return noRaiz.getNo(valor);
-    }
-    
-    
+      
+    //Método que gera e retorna a lista de elementos da árvore
     public List<No> geraElementos(No noRaiz) {
         if (noRaiz.getNivelNo() == 0) {
             elementos.add(noRaiz);
@@ -48,19 +43,19 @@ public class Arvore {
         return this.elementos;
     }
     
-    
+    //Método que printa os a lista de elementos gerada
     public void getElementos(){
         elementos.clear();
         List<No> elementos = new ArrayList<No>();
         elementos = geraElementos(noRaiz);
         
         for (No elemento : elementos) {
-            System.out.print(elemento.getValorNo() + ", ");
+            System.out.print(elemento.getValorNo() + "  ");
         }
         System.out.println("");
     }
     
-    
+    //Método que retorna os nós folhas da árvore
     public void getNoFolha() {
         elementos.clear();
         elementos = geraElementos(noRaiz);
@@ -74,12 +69,12 @@ public class Arvore {
         }
         
         for (No noFolha : nosFolhas) {
-            System.out.print(noFolha.getValorNo() + ", ");
+            System.out.print(noFolha.getValorNo() + "  ");
         }
         System.out.println("");
-
     }
     
+    //Método que retorna os nós internos da árvore
     public void getNoInterno() {
         elementos.clear();
         elementos = geraElementos(noRaiz);
@@ -93,12 +88,12 @@ public class Arvore {
         }
 
         for (No noInterno: nosInternos) {
-            System.out.print(noInterno.getValorNo() + ", ");
+            System.out.print(noInterno.getValorNo() + "  ");
         }
         System.out.println("");
     }
     
-        
+    //Método que printa a árvore de forma identada
     public void printArvore(No no){
         if (no.getNivelNo() == 0) {
             System.out.println(no.getValorNo());
@@ -113,8 +108,6 @@ public class Arvore {
                 printArvore(noFilho); 
            }   
         }
-
-        }
     }
+}
     
-   
