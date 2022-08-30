@@ -7,106 +7,152 @@ package com.mycompany.arvore_generica;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
- *
  * @author vinyj
  */
 public class Arvore {
     //Atributos da árvore generica
     private No noRaiz;
     private List<No> elementos;
-   
+
     //Construtor da árvore generica
     public Arvore(No no) {
         this.noRaiz = no;
         this.elementos = new ArrayList<>();
     }
-    
+
     //Método que retorna o nó raiz da árvore
-    public No getNoRaiz(){
+    public No getNoRaiz() {
         return noRaiz;
     }
-      
+
     //Método que gera e retorna a lista de elementos da árvore
     public List<No> geraElementos(No noRaiz) {
         if (noRaiz.getNivelNo() == 0) {
             elementos.add(noRaiz);
         }
-        
+
         if (noRaiz.getFilhosNo().size() > 0) {
-            for (No noFilho : noRaiz.getFilhosNo()){
-                elementos.add(noFilho);   
-                geraElementos(noFilho);        
-            }  
+            for (No noFilho : noRaiz.getFilhosNo()) {
+                elementos.add(noFilho);
+                geraElementos(noFilho);
+            }
         }
-        
+
         return this.elementos;
     }
-    
+
     //Método que printa os a lista de elementos gerada
-    public void getElementos(){
+    public void getElementos() {
         elementos.clear();
-        List<No> elementos = new ArrayList<No>();
         elementos = geraElementos(noRaiz);
-        
+
         for (No elemento : elementos) {
             System.out.print(elemento.getValorNo() + "  ");
         }
-        System.out.println("");
+        System.out.println();
     }
-    
+
     //Método que retorna os nós folhas da árvore
     public void getNoFolha() {
         elementos.clear();
         elementos = geraElementos(noRaiz);
-        
-        List<No> nosFolhas = new ArrayList<No>();
-        
+
+        List<No> nosFolhas = new ArrayList<>();
+
         for (No elemento : elementos) {
             if (elemento.getFilhosNo().size() == 0) {
                 nosFolhas.add(elemento);
             }
         }
-        
+
         for (No noFolha : nosFolhas) {
             System.out.print(noFolha.getValorNo() + "  ");
         }
-        System.out.println("");
+        System.out.println();
     }
-    
+
     //Método que retorna os nós internos da árvore
     public void getNoInterno() {
         elementos.clear();
         elementos = geraElementos(noRaiz);
 
-        List<No> nosInternos = new ArrayList<No>();
-        
+        List<No> nosInternos = new ArrayList<>();
+
         for (No elemento : elementos) {
             if (elemento.getFilhosNo().size() != 0) {
                 nosInternos.add(elemento);
             }
         }
 
-        for (No noInterno: nosInternos) {
+        for (No noInterno : nosInternos) {
             System.out.print(noInterno.getValorNo() + "  ");
         }
-        System.out.println("");
+        System.out.println();
     }
-    
+
+    //Método que retorna a altura de cada nó da árvore
+    public void getAlturaNo() {
+        elementos.clear();
+        elementos = geraElementos(noRaiz);
+
+        int altura = 0;
+
+        for (No elemento : elementos) {
+            if (elemento.getNivelNo() > altura) {
+                altura = elemento.getNivelNo();
+            }
+        }
+
+        elementos.clear();
+        elementos = geraElementos(noRaiz);
+
+        for (No elemento : elementos) {
+            System.out.println("Nó " + elemento.getValorNo() + " tem altura " + (altura - elemento.getNivelNo()));
+        }
+    }
+
+    //Método que retorna a profundidade da árvore
+    public void getProfundidadeArvore() {
+        elementos.clear();
+        elementos = geraElementos(noRaiz);
+
+        int altura = 0;
+
+        for (No elemento : elementos) {
+            if (elemento.getNivelNo() > altura) {
+                altura = elemento.getNivelNo();
+            }
+        }
+
+        System.out.println(altura);
+    }
+
+    //Método que retorna a profundidade de cada nó da árvore
+    public void getProfundidadeNo() {
+        elementos.clear();
+        elementos = geraElementos(noRaiz);
+
+        for (No elemento : elementos) {
+            System.out.println("Nó " + elemento.getValorNo() + " tem profundidade " + elemento.getNivelNo());
+        }
+    }
+
     //Método que printa a árvore de forma identada
-    public void printArvore(No no){
+    public void printArvore(No no) {
         if (no.getNivelNo() == 0) {
             System.out.println(no.getValorNo());
         }
         if (no.getFilhosNo().size() > 0) {
-            for (No noFilho : no.getFilhosNo()){
+            for (No noFilho : no.getFilhosNo()) {
                 String spaces = "";
-                for (int i = 0; i < noFilho.getNivelNo(); i++){
+                for (int i = 0; i < noFilho.getNivelNo(); i++) {
                     spaces += "  ";
                 }
-                System.out.println(spaces + noFilho.getValorNo());     
-                printArvore(noFilho); 
-           }   
+                System.out.println(spaces + noFilho.getValorNo());
+                printArvore(noFilho);
+            }
         }
     }
 }
