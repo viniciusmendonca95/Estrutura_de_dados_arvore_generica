@@ -39,7 +39,7 @@ public class Main {
         arvore.getAlturaNo();
 
         System.out.println("\nAltura da árvore:");
-        arvore.getProfundidadeArvore();
+        arvore.getAlturaArvore();
 
         System.out.println("\nProfundidade do nó:");
         arvore.getProfundidadeNo();
