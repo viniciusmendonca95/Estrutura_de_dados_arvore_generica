@@ -92,6 +92,22 @@ public class Arvore {
         System.out.println();
     }
 
+    //Método que retorna a altura da árvore
+    public void getAlturaArvore() {
+        elementos.clear();
+        elementos = geraElementos(noRaiz);
+
+        int altura = 0;
+
+        for (No elemento : elementos) {
+            if (elemento.getNivelNo() > altura) {
+                altura = elemento.getNivelNo();
+            }
+        }
+
+        System.out.println(altura);
+    }
+
     //Método que retorna a altura de cada nó da árvore
     public void getAlturaNo() {
         elementos.clear();
@@ -109,8 +125,22 @@ public class Arvore {
         elementos = geraElementos(noRaiz);
 
         for (No elemento : elementos) {
-            System.out.println("Nó " + elemento.getValorNo() + " tem altura " + (altura - elemento.getNivelNo()));
+
+            System.out.println("Nó " + elemento.getValorNo() + " tem altura " + getAlturaNo(elemento));
         }
+
+    }
+
+    private Integer getAlturaNo(No no) {
+        if (no == null) {
+            return -1;
+        }
+
+        for (No filho : no.getFilhosNo()) {
+            return 1 + getAlturaNo(filho);
+        }
+
+        return 0;
     }
 
     //Método que retorna a profundidade da árvore
@@ -118,15 +148,15 @@ public class Arvore {
         elementos.clear();
         elementos = geraElementos(noRaiz);
 
-        int altura = 0;
+        int profundidade = 0;
 
         for (No elemento : elementos) {
-            if (elemento.getNivelNo() > altura) {
-                altura = elemento.getNivelNo();
+            if (elemento.getNivelNo() > profundidade) {
+                profundidade = elemento.getNivelNo();
             }
         }
 
-        System.out.println(altura);
+        System.out.println(profundidade);
     }
 
     //Método que retorna a profundidade de cada nó da árvore
