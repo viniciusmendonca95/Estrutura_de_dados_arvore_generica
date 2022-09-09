@@ -43,4 +43,9 @@ public class No {
     public int getNivelNo() {
         return nivel;
     }
+    
+    //Método de retorno do grau do nó
+    public int getGrau() {
+        return filhos.size();
+    }
 }

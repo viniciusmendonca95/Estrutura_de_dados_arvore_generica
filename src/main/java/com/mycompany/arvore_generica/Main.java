@@ -48,9 +48,11 @@ public class Main {
         arvore.getProfundidadeArvore();
 
         System.out.println("\nGrau do nó:");
-
+        noRaiz.getGrau();
+                
         System.out.println("\nGrau da árvore:");
-
+        arvore.getGrauArvore();
+        
         System.out.println("\nElementos: ");
         arvore.getElementos();
 
@@ -64,3 +66,5 @@ public class Main {
         arvore.printArvore(noRaiz);
     }
 }
+
+   
